@@ -2,7 +2,6 @@ import 'package:closest_hospital/constants/colors.dart';
 import 'package:closest_hospital/data/data.dart';
 import 'package:closest_hospital/models/state_hospitals.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
-import 'package:closest_hospital/widget/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -121,7 +120,6 @@ class _StateHospitalsScreenState extends State<StateHospitalsScreen> {
           )
         ],
       ),
-      bottomNavigationBar: NavigationBar(),
     );
   }
 }

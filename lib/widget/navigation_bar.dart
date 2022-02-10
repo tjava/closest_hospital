@@ -6,17 +6,16 @@ import 'package:get/get.dart';
 
 class NavigationBar extends StatelessWidget {
   const NavigationBar({Key? key}) : super(key: key);
-  // int index = 0;
 
   @override
   Widget build(BuildContext context) {
     NavigationController navigationController = Get.find();
 
     final items = <Widget>[
-      Icon(Icons.home, size: 30, color: Colors.white),
-      Icon(Icons.location_pin, size: 30, color: Colors.white),
-      Icon(Icons.search, size: 30, color: Colors.white),
-      Icon(Icons.person, size: 30, color: Colors.white),
+      const Icon(Icons.home, size: 30, color: Colors.white),
+      const Icon(Icons.location_pin, size: 30, color: Colors.white),
+      const Icon(Icons.search, size: 30, color: Colors.white),
+      const Icon(Icons.person, size: 30, color: Colors.white),
     ];
 
     return Obx(
@@ -27,7 +26,7 @@ class NavigationBar extends StatelessWidget {
         color: blue,
         backgroundColor: Colors.transparent,
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 500),
+        animationDuration: const Duration(milliseconds: 300),
         onTap: (screen) => navigationController.changeScreen(screen),
       ),
     );

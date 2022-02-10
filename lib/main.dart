@@ -1,8 +1,6 @@
 import 'package:closest_hospital/constants/init_dependencies.dart';
-import 'package:closest_hospital/screens/about_us_screen.dart';
-import 'package:closest_hospital/screens/closest_hospitals_screen.dart';
-import 'package:closest_hospital/screens/home_screen.dart';
-import 'package:closest_hospital/screens/state_hospitals_screen.dart';
+import 'package:closest_hospital/layout.dart';
+import 'package:closest_hospital/screens/single_hospital_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,14 +22,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const HomeScreen()),
+        GetPage(name: '/', page: () => Layout()),
         GetPage(
-            name: '/closestHospital', page: () => const ClosestHospitalSceen()),
-        GetPage(
-            name: '/stateHospital', page: () => const StateHospitalsScreen()),
-        GetPage(name: '/aboutUs', page: () => const AboutUsScreen()),
+            name: '/singleHospital', page: () => const SingleHospitalScreen()),
       ],
-      // home: const HomeScreen(),
     );
   }
 }

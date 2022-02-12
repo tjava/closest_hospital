@@ -92,7 +92,7 @@ class _StateHospitalsScreenState extends State<StateHospitalsScreen> {
                   borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(
                     width: 0.8,
-                    color: blue,
+                    color: red,
                   ),
                 ),
                 hintText: 'Search Hospital',

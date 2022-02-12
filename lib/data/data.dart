@@ -1,5 +1,6 @@
 import 'package:closest_hospital/models/state_hospitals.dart';
 
+// StateHospital
 final _stateHospital0 = StateHospital(
   imageUrl: 'assets/images/medical_1.svg',
   name: 'StateHospital 0',

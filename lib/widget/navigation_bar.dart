@@ -23,7 +23,7 @@ class NavigationBar extends StatelessWidget {
         items: items,
         index: navigationController.indexScreen.value,
         height: 60,
-        color: blue,
+        color: red,
         backgroundColor: Colors.transparent,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),

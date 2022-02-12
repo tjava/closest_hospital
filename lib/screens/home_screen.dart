@@ -63,55 +63,58 @@ class HomeScreen extends StatelessWidget {
     NavigationController navigationController = Get.find();
     return Scaffold(
       backgroundColor: light,
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  child: Icon(
-                    Icons.local_hospital_rounded,
-                    size: 30,
-                    color: red,
-                  ),
-                ),
-                Column(
-                  children: [
-                    CustomText(
-                      text: 'Current Location',
-                      size: 16,
-                      color: lightGrey,
+            Container(
+              margin: EdgeInsets.only(top: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: Icon(
+                      Icons.local_hospital_rounded,
+                      size: 30,
+                      color: red,
                     ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          size: 20,
-                          color: red,
-                        ),
-                        CustomText(
-                          text: 'Minna, Niger',
-                          size: 16,
-                          color: dark,
-                          weight: FontWeight.bold,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 10),
-                  child: Icon(
-                    Icons.location_pin,
-                    size: 30,
-                    color: red,
                   ),
-                ),
-              ],
+                  Column(
+                    children: [
+                      CustomText(
+                        text: 'Current Location',
+                        size: 16,
+                        color: lightGrey,
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
+                            size: 20,
+                            color: red,
+                          ),
+                          CustomText(
+                            text: 'Minna, Niger',
+                            size: 16,
+                            color: dark,
+                            weight: FontWeight.bold,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.location_pin,
+                      size: 30,
+                      color: red,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 30),
             Container(

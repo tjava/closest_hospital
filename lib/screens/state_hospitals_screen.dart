@@ -1,71 +1,20 @@
 import 'package:closest_hospital/constants/colors.dart';
+import 'package:closest_hospital/controllers/state_hospitals_controller.dart';
 import 'package:closest_hospital/data/data.dart';
 import 'package:closest_hospital/models/state_hospitals.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
+import 'package:closest_hospital/widget/hospital_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class StateHospitalsScreen extends StatefulWidget {
+class StateHospitalsScreen extends StatelessWidget {
   const StateHospitalsScreen({Key? key}) : super(key: key);
 
-  @override
-  _StateHospitalsScreenState createState() => _StateHospitalsScreenState();
-}
-
-class _StateHospitalsScreenState extends State<StateHospitalsScreen> {
-  _buildStateHospitals() {
+  _buildStateHospitals(context) {
     List<Widget> stateHospitalList = [];
     stateHospitals.forEach((StateHospital stateHospital) {
       stateHospitalList.add(
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15.0),
-            border: Border.all(
-              width: 1.0,
-              color: Colors.grey,
-            ),
-          ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 150.0,
-                width: 150.0,
-                child: SvgPicture.asset(stateHospital.imageUrl!),
-              ),
-              Container(
-                margin: EdgeInsets.all(12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: stateHospital.name!,
-                      size: 20.0,
-                      weight: FontWeight.bold,
-                      color: dark,
-                    ),
-                    SizedBox(height: 4.0),
-                    CustomText(
-                      text: stateHospital.owner! + ' Hostpital',
-                      size: 16.0,
-                      weight: FontWeight.w600,
-                      color: dark,
-                    ),
-                    SizedBox(height: 4.0),
-                    CustomText(
-                      text: stateHospital.specialist! + ' Specialist',
-                      size: 16.0,
-                      weight: FontWeight.w600,
-                      color: dark,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+        HospitalCard(stateHospital: stateHospital),
       );
     });
     return Column(children: stateHospitalList);
@@ -73,52 +22,80 @@ class _StateHospitalsScreenState extends State<StateHospitalsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    StateHospitalsController stateHospitalsController = Get.find();
+
     return Scaffold(
       backgroundColor: light,
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(width: 0.8),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(
-                    width: 0.8,
-                    color: red,
+      body: Obx(
+        () => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: ListView(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin:
+                        const EdgeInsets.only(top: 30.0, left: 10, right: 10),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 30,
+                          offset: const Offset(8, 10),
+                          color: red.withOpacity(0.1),
+                        ),
+                        BoxShadow(
+                          blurRadius: 10,
+                          offset: const Offset(-1, -5),
+                          color: red.withOpacity(0.1),
+                        ),
+                      ],
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          color: red,
+                        ),
+                        iconSize: 36.0,
+                        value: stateHospitalsController.stateValue.value,
+                        items: states.map<DropdownMenuItem<String>>(
+                          (String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: CustomText(
+                                text: value,
+                              ),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (String? state) {
+                          stateHospitalsController.changeState(state);
+                        },
+                      ),
+                    ),
                   ),
-                ),
-                hintText: 'Search Hospital',
-                prefixIcon: Icon(
-                  Icons.search,
-                  size: 30.0,
-                ),
-              ),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: CustomText(
-                  text: 'Closest Hospitals',
-                  size: 24.0,
-                  weight: FontWeight.w600,
-                  color: dark,
-                ),
-              ),
-              _buildStateHospitals(),
+                  Container(
+                    margin: const EdgeInsets.only(top: 30.0, left: 10),
+                    child: CustomText(
+                      text: stateHospitalsController.stateValue.value +
+                          ' State Hospitals',
+                      size: 20.0,
+                      weight: FontWeight.w600,
+                      color: dark,
+                    ),
+                  ),
+                  _buildStateHospitals(context),
+                ],
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

@@ -1,8 +1,6 @@
 import 'package:closest_hospital/constants/colors.dart';
-import 'package:closest_hospital/controllers/navigation_controller.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,12 +14,12 @@ class HomeScreen extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               blurRadius: 30,
-              offset: Offset(8, 10),
+              offset: const Offset(8, 10),
               color: red.withOpacity(0.1),
             ),
             BoxShadow(
               blurRadius: 10,
-              offset: Offset(-1, -5),
+              offset: const Offset(-1, -5),
               color: red.withOpacity(0.1),
             ),
           ],
@@ -31,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: 100,
               width: 150,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(imagePath!),
@@ -43,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 height: 50,
                 width: 150,
-                margin: EdgeInsets.only(top: 100),
+                margin: const EdgeInsets.only(top: 100),
                 child: Center(
                   child: CustomText(
                     text: name!,
@@ -60,20 +58,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NavigationController navigationController = Get.find();
     return Scaffold(
       backgroundColor: light,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 30.0),
+              margin: const EdgeInsets.only(top: 30.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(left: 10),
                     child: Icon(
                       Icons.local_hospital_rounded,
                       size: 30,
@@ -87,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                         size: 16,
                         color: lightGrey,
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         children: [
                           Icon(
@@ -106,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     child: Icon(
                       Icons.location_pin,
                       size: 30,
@@ -116,32 +113,32 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Container(
               height: 200,
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(right: 10, left: 10),
+              margin: const EdgeInsets.only(right: 10, left: 10),
               child: Stack(
                 children: [
                   Container(
                     height: 140,
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(top: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage("assets/images/home_1.png"),
                         fit: BoxFit.fill,
                       ),
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 30,
-                          offset: Offset(8, 10),
+                          offset: const Offset(8, 10),
                           color: red.withOpacity(0.1),
                         ),
                         BoxShadow(
                           blurRadius: 10,
-                          offset: Offset(-1, -5),
+                          offset: const Offset(-1, -5),
                           color: red.withOpacity(0.1),
                         ),
                       ],
@@ -150,10 +147,11 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     height: 220,
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(right: 180, left: 30, bottom: 30),
+                    margin:
+                        const EdgeInsets.only(right: 180, left: 30, bottom: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage("assets/images/home_2.png"),
                         fit: BoxFit.fill,
                       ),
@@ -162,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     height: 100,
                     width: double.infinity,
-                    margin: EdgeInsets.only(left: 150, top: 50),
+                    margin: const EdgeInsets.only(left: 150, top: 50),
                     child: Column(
                       children: [
                         CustomText(
@@ -171,21 +169,21 @@ class HomeScreen extends StatelessWidget {
                           weight: FontWeight.bold,
                           color: dark,
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         CustomText(
                           text: "By providing your location,",
                           size: 16,
                           weight: FontWeight.w300,
                           color: dark,
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         CustomText(
                           text: "You get the",
                           size: 16,
                           weight: FontWeight.w300,
                           color: dark,
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         CustomText(
                           text: "Closest medical facilities.",
                           size: 16,
@@ -199,7 +197,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 10),
+              margin: const EdgeInsets.only(left: 10),
               child: CustomText(
                 text: "What did you need ?",
                 size: 20,
@@ -207,11 +205,11 @@ class HomeScreen extends StatelessWidget {
                 color: dark,
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(right: 10, left: 10),
+                  margin: const EdgeInsets.only(right: 10, left: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -226,9 +224,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Container(
-                  margin: EdgeInsets.only(right: 10, left: 10),
+                  margin: const EdgeInsets.only(right: 10, left: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -243,9 +241,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Container(
-                  margin: EdgeInsets.only(right: 10, left: 10),
+                  margin: const EdgeInsets.only(right: 10, left: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

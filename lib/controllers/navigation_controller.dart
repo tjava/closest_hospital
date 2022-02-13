@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class NavigationController extends GetxController {
-  final RxInt _indexScreen = 1.obs;
+  final RxInt _indexScreen = 2.obs;
   RxInt get indexScreen => _indexScreen;
 
   void changeScreen(screen) {

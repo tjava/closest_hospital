@@ -39,3 +39,10 @@ final List<StateHospital> stateHospitals = [
   _stateHospital3,
   _stateHospital4,
 ];
+
+final List<String> states = [
+  'Abia',
+  'Adamawa',
+  'Akwa-ibon',
+  'Anabra',
+];

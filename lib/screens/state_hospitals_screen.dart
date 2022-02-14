@@ -14,7 +14,10 @@ class StateHospitalsScreen extends StatelessWidget {
     List<Widget> stateHospitalList = [];
     stateHospitals.forEach((StateHospital stateHospital) {
       stateHospitalList.add(
-        HospitalCard(stateHospital: stateHospital),
+        GestureDetector(
+          onTap: () => Get.toNamed("/singleHospital"),
+          child: HospitalCard(stateHospital: stateHospital),
+        ),
       );
     });
     return Column(children: stateHospitalList);

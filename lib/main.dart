@@ -1,5 +1,6 @@
 import 'package:closest_hospital/constants/init_dependencies.dart';
 import 'package:closest_hospital/layout.dart';
+import 'package:closest_hospital/screens/facility_category.dart';
 import 'package:closest_hospital/screens/single_hospital_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialBinding: InitDependencies(),
+      title: 'Closest hospitals',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => Layout()),
+        GetPage(
+          name: '/singleHospital',
+          page: () => const SingleHospitalScreen(),
+          transition: Transition.rightToLeft,
+        ),
+        GetPage(
+          name: '/facilityCategory',
+          page: () => const FacilityCategory(),
+          transition: Transition.rightToLeft,
+        ),
+      ],
       builder: (context, widget) => ResponsiveWrapper.builder(
         ClampingScrollWrapper.builder(context, widget!),
         breakpoints: [
@@ -26,16 +45,6 @@ class MyApp extends StatelessWidget {
           ResponsiveBreakpoint.autoScale(1700, name: DESKTOP),
         ],
       ),
-      title: 'Closest hospitals',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: () => Layout()),
-        GetPage(
-            name: '/singleHospital', page: () => const SingleHospitalScreen()),
-      ],
     );
   }
 }

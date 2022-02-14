@@ -1,6 +1,7 @@
 import 'package:closest_hospital/constants/colors.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -213,30 +214,19 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_3.png",
-                        name: "General Hospital",
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_3.png",
+                          name: "General Hospital",
+                        ),
                       ),
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_4.png",
-                        name: "Clinic",
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Container(
-                  margin: const EdgeInsets.only(right: 10, left: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_5.png",
-                        name: "Health Post",
-                      ),
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_6.png",
-                        name: "Specialist",
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_4.png",
+                          name: "Clinic",
+                        ),
                       ),
                     ],
                   ),
@@ -247,13 +237,42 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_7.png",
-                        name: "Dispensary",
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_5.png",
+                          name: "Health Post",
+                        ),
                       ),
-                      _buildHomeOption(
-                        imagePath: "assets/images/home_8.png",
-                        name: "Primary Health Centre",
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_6.png",
+                          name: "Specialist",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  margin: const EdgeInsets.only(right: 10, left: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_7.png",
+                          name: "Dispensary",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed("/facilityCategory"),
+                        child: _buildHomeOption(
+                          imagePath: "assets/images/home_8.png",
+                          name: "Primary Health Centre",
+                        ),
                       ),
                     ],
                   ),

@@ -15,7 +15,7 @@ class NavigationBar extends StatelessWidget {
       const Icon(Icons.home, size: 30, color: Colors.white),
       const Icon(Icons.location_pin, size: 30, color: Colors.white),
       const Icon(Icons.search, size: 30, color: Colors.white),
-      const Icon(Icons.person, size: 30, color: Colors.white),
+      const Icon(Icons.info_outline, size: 30, color: Colors.white),
     ];
 
     return Obx(

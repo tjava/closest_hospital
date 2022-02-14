@@ -6,8 +6,8 @@ import 'package:closest_hospital/widget/hospital_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ClosestHospitalSceen extends StatelessWidget {
-  const ClosestHospitalSceen({Key? key}) : super(key: key);
+class FacilityCategory extends StatelessWidget {
+  const FacilityCategory({Key? key}) : super(key: key);
   _buildStateHospitals(context) {
     List<Widget> stateHospitalList = [];
     stateHospitals.forEach((StateHospital stateHospital) {
@@ -33,15 +33,35 @@ class ClosestHospitalSceen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
+                  margin: const EdgeInsets.only(top: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: GestureDetector(
+                          onTap: () => Get.back(),
+                          child: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                            color: red,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
                   margin: const EdgeInsets.only(top: 30.0, left: 10),
                   child: CustomText(
-                    text: 'Closest Hospitals (3km)',
+                    text: 'List',
                     size: 20.0,
                     weight: FontWeight.w600,
                     color: dark,
                   ),
                 ),
                 _buildStateHospitals(context),
+                const SizedBox(height: 20),
               ],
             )
           ],

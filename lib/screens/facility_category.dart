@@ -54,7 +54,7 @@ class FacilityCategory extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 30.0, left: 10),
                   child: CustomText(
-                    text: 'List',
+                    text: '${Get.arguments} List',
                     size: 20.0,
                     weight: FontWeight.w600,
                     color: dark,

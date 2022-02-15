@@ -215,14 +215,20 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "General Hospital",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_3.png",
                           name: "General Hospital",
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "Clinic",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_4.png",
                           name: "Clinic",
@@ -238,14 +244,20 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "Health Post",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_5.png",
                           name: "Health Post",
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "Specialist",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_6.png",
                           name: "Specialist",
@@ -261,14 +273,20 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "Dispensary",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_7.png",
                           name: "Dispensary",
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Get.toNamed("/facilityCategory"),
+                        onTap: () => Get.toNamed(
+                          "/facilityCategory",
+                          arguments: "Primary Health Centre",
+                        ),
                         child: _buildHomeOption(
                           imagePath: "assets/images/home_8.png",
                           name: "Primary Health Centre",

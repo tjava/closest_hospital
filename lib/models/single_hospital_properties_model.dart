@@ -22,10 +22,10 @@ class SingleHospitalPropertiesModel {
   String? lga;
 
   @JsonKey(name: "lon")
-  int? lon;
+  double? lon;
 
   @JsonKey(name: "lat")
-  int? lat;
+  double? lat;
 
   SingleHospitalPropertiesModel();
 

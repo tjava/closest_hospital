@@ -11,22 +11,21 @@ class StateHospitalsController extends GetxController {
   final RxString _stateValue = 'Abia'.obs;
   RxString get stateValue => _stateValue;
 
-  Rx get single => singleHospitalPropertiesModel.obs;
+  Rx get singleHospital => singleHospitalPropertiesModel.obs;
 
   void changeState(state) {
     _stateValue.value = state;
   }
 
   Future getSingleHospital() async {
-    Response response;
-
+    singleHospitalService = SingleHospitalService();
     try {
-      response = (await singleHospitalService!
-          .getSingleHospital("/hospitals/1")) as Response;
+      final response =
+          await singleHospitalService!.getSingleHospital("hospitals/1");
       if (response.statusCode == 200) {
-        singleHospitalModel = SingleHospitalModel.fromJson(response.body);
+        singleHospitalModel = SingleHospitalModel.fromJson(response.data);
         singleHospitalPropertiesModel = singleHospitalModel!.properties;
-        print(response.body);
+        print(response.data);
       } else {
         print("there is error");
       }
@@ -34,4 +33,11 @@ class StateHospitalsController extends GetxController {
       print(error);
     }
   }
+
+  // @override
+  // void onInit() async {
+  //   //
+  //   getSingleHospital();
+  //   super.onInit();
+  // }
 }

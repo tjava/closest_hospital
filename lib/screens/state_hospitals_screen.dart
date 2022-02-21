@@ -83,14 +83,17 @@ class StateHospitalsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 30.0, left: 10),
-                    child: CustomText(
-                      text: stateHospitalsController.stateValue.value +
-                          ' State Hospitals',
-                      size: 20.0,
-                      weight: FontWeight.w600,
-                      color: dark,
+                  GestureDetector(
+                    onTap: () => stateHospitalsController.getSingleHospital(),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 30.0, left: 10),
+                      child: CustomText(
+                        text:
+                            "${stateHospitalsController.stateValue.value} State Hospitals",
+                        size: 20.0,
+                        weight: FontWeight.w600,
+                        color: dark,
+                      ),
                     ),
                   ),
                   _buildStateHospitals(context),

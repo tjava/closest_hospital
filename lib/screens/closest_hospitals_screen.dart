@@ -8,18 +8,18 @@ import 'package:get/get.dart';
 
 class ClosestHospitalSceen extends StatelessWidget {
   const ClosestHospitalSceen({Key? key}) : super(key: key);
-  _buildStateHospitals(context) {
-    List<Widget> stateHospitalList = [];
-    stateHospitals.forEach((StateHospital stateHospital) {
-      stateHospitalList.add(
-        GestureDetector(
-          onTap: () => Get.toNamed("/singleHospital"),
-          child: HospitalCard(stateHospital: stateHospital),
-        ),
-      );
-    });
-    return Column(children: stateHospitalList);
-  }
+  // _buildStateHospitals(context) {
+  //   List<Widget> stateHospitalList = [];
+  //   stateHospitals.forEach((StateHospital stateHospital) {
+  //     stateHospitalList.add(
+  //       GestureDetector(
+  //         onTap: () => Get.toNamed("/singleHospital"),
+  //         // child: HospitalCard(stateHospital: stateHospital),
+  //       ),
+  //     );
+  //   });
+  //   return Column(children: stateHospitalList);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class ClosestHospitalSceen extends StatelessWidget {
                     color: dark,
                   ),
                 ),
-                _buildStateHospitals(context),
+                // _buildStateHospitals(context),
               ],
             )
           ],

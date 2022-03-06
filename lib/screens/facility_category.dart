@@ -14,7 +14,7 @@ class FacilityCategory extends StatelessWidget {
       stateHospitalList.add(
         GestureDetector(
           onTap: () => Get.toNamed("/singleHospital"),
-          child: HospitalCard(stateHospital: stateHospital),
+          // child: HospitalCard(stateHospital: stateHospital),
         ),
       );
     });

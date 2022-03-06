@@ -14,8 +14,8 @@ SingleHospitalPropertiesModel _$SingleHospitalPropertiesModelFromJson(
       ..ward = json['ward'] as String?
       ..ownership = json['ownership'] as String?
       ..lga = json['lga'] as String?
-      ..lon = json['lon'] as double?
-      ..lat = json['lat'] as double?;
+      ..lon = (json['lon'] as num?)?.toDouble()
+      ..lat = (json['lat'] as num?)?.toDouble();
 
 Map<String, dynamic> _$SingleHospitalPropertiesModelToJson(
         SingleHospitalPropertiesModel instance) =>

@@ -1,10 +1,11 @@
 import 'package:closest_hospital/constants/colors.dart';
+import 'package:closest_hospital/models/single_hospital_properties_model.dart';
 import 'package:closest_hospital/models/state_hospitals.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class HospitalCard extends StatelessWidget {
-  final StateHospital stateHospital;
+  final SingleHospitalPropertiesModel stateHospital;
 
   const HospitalCard({Key? key, required this.stateHospital}) : super(key: key);
 
@@ -33,16 +34,16 @@ class HospitalCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Container(
-            height: 150.0,
-            width: 150.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(stateHospital.imageUrl!),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
+          // Container(
+          //   height: 150.0,
+          //   width: 150.0,
+          //   decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //       image: AssetImage(stateHospital.imageUrl!),
+          //       fit: BoxFit.fill,
+          //     ),
+          //   ),
+          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +51,7 @@ class HospitalCard extends StatelessWidget {
               SizedBox(
                 width: 170,
                 child: CustomText(
-                  text: stateHospital.name!,
+                  text: stateHospital.facility_name!,
                   size: 20.0,
                   weight: FontWeight.bold,
                   color: dark,
@@ -60,7 +61,7 @@ class HospitalCard extends StatelessWidget {
               SizedBox(
                 width: 170,
                 child: CustomText(
-                  text: stateHospital.owner!,
+                  text: stateHospital.ownership!,
                   size: 16.0,
                   weight: FontWeight.w600,
                   color: dark,
@@ -70,7 +71,7 @@ class HospitalCard extends StatelessWidget {
               SizedBox(
                 width: 170,
                 child: CustomText(
-                  text: stateHospital.specialist!,
+                  text: stateHospital.facility_type!,
                   size: 16.0,
                   weight: FontWeight.w600,
                   color: dark,

@@ -1,5 +1,4 @@
 import 'package:closest_hospital/models/single_hospital_model.dart';
-import 'package:closest_hospital/models/single_hospital_properties_model.dart';
 import 'package:closest_hospital/models/state_hospitals_model.dart';
 import 'package:closest_hospital/services/single_hospital_service.dart';
 import 'package:closest_hospital/services/state_hospitals_service.dart';
@@ -10,30 +9,28 @@ class StateHospitalsController extends GetxController {
   StateHospitalsService? stateHospitalsService;
   StateHospitalsModel? stateHospitalsModel;
   SingleHospitalModel? singleHospitalModel;
-  SingleHospitalPropertiesModel? singleHospitalPropertiesModel;
 
   RxString stateValue = 'Select State'.obs;
   // RxString get stateValue => _stateValue;
 
-  List<SingleHospitalModel>? stateHospitals = <SingleHospitalModel>[].obs;
+  RxList<SingleHospitalModel>? stateHospitals = <SingleHospitalModel>[].obs;
+  RxBool isLoading = true.obs;
 
-  void changeState({String? state, int? index}) async {
+  Future changeState({String? state, int? index}) async {
     stateValue.value = state!;
     await getStateHospitals(index: index!);
-    print(index);
   }
-
-  void call(index) {}
 
   Future getStateHospitals({int? index}) async {
     stateHospitalsService = StateHospitalsService();
     try {
       final response = await stateHospitalsService!
           .getStateHospitals("hospitals/?state=$index");
-      print("hospitals/?state=$index");
       if (response.statusCode == 200) {
         stateHospitalsModel = StateHospitalsModel.fromJson(response.data);
-        stateHospitals = stateHospitalsModel!.features;
+        stateHospitals!.value = stateHospitalsModel!.features!;
+        isLoading.value = false;
+        // print(stateHospitals);
       } else {
         print("there is error");
       }
@@ -42,29 +39,12 @@ class StateHospitalsController extends GetxController {
     }
   }
 
-  // Future getSingleHospital() async {
-  //   singleHospitalService = SingleHospitalService();
-  //   try {
-  //     final response =
-  //         await singleHospitalService!.getSingleHospital("hospitals/1");
-  //     if (response.statusCode == 200) {
-  //       singleHospitalModel = SingleHospitalModel.fromJson(response.data);
-  //       singleHospitalPropertiesModel = singleHospitalModel!.properties;
-  //       print(response.data);
-  //     } else {
-  //       print("there is error");
-  //     }
-  //   } on Exception catch (error) {
-  //     print(error);
-  //   }
+  // @override
+  // void onInit() async {
+  //   //
+  //   // getSingleHospital();
+  //   // print(stateHospitals);
+  //   // getStateHospitals();
+  //   super.onInit();
   // }
-
-  @override
-  void onInit() async {
-    //
-    // getSingleHospital();
-    // print(stateHospitals);
-    // getStateHospitals();
-    super.onInit();
-  }
 }

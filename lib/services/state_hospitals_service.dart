@@ -24,4 +24,20 @@ class StateHospitalsService {
 
     return response;
   }
+
+  // initializeInterceptors() {
+  //   _dio.interceptors.add(
+  //     InterceptorsWrapper(
+  //       onError: (error, errorInterceptorHandler) {
+  //         print(error.message);
+  //       },
+  //       onRequest: (request, requestInterceptorHandler) {
+  //         print("${request.method} ${request.path}");
+  //       },
+  //       onResponse: (response, responseInterceptorHandler) {
+  //         print(response.data);
+  //       },
+  //     ),
+  //   );
+  // }
 }

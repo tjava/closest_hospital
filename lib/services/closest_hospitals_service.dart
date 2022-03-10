@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
 
-class SingleHospitalService {
+class ClosestHospitalsService {
   late Dio _dio;
 
   final String baseUrl = "http://localhost:8080/api/v1/";
 
-  SingleHospitalService() {
+  ClosestHospitalsService() {
     _dio = Dio(BaseOptions(
       baseUrl: baseUrl,
     ));
     // initializeInterceptors();
   }
 
-  Future<Response> getSingleHospital(String endPoint) async {
+  Future<Response> getClosestHospitals(String endPoint) async {
     Response response;
     try {
       response = await _dio.get(endPoint);

@@ -1,9 +1,7 @@
 import 'package:closest_hospital/constants/colors.dart';
+import 'package:closest_hospital/controllers/single_hospital_controller.dart';
 import 'package:closest_hospital/controllers/state_hospitals_controller.dart';
 import 'package:closest_hospital/data/data.dart';
-import 'package:closest_hospital/models/single_hospital_model.dart';
-import 'package:closest_hospital/models/state_hospitals.dart';
-import 'package:closest_hospital/models/state_hospitals_model.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
 import 'package:closest_hospital/widget/hospital_card.dart';
 import 'package:flutter/material.dart';
@@ -12,23 +10,10 @@ import 'package:get/get.dart';
 class StateHospitalsScreen extends StatelessWidget {
   const StateHospitalsScreen({Key? key}) : super(key: key);
 
-  // _buildStateHospitals(context, stateHospitals) {
-  //   List<Widget> stateHospitalList = [];
-  //   stateHospitals.forEach((SingleHospitalModel singleHospitalsModel) {
-  //     stateHospitalList.add(
-  //       GestureDetector(
-  //         onTap: () => Get.toNamed("/singleHospital"),
-  //         child: HospitalCard(stateHospital: singleHospitalsModel.properties!),
-  //       ),
-  //     );
-  //   });
-  //   return Column(children: stateHospitalList);
-  // }
-
   @override
   Widget build(BuildContext context) {
     StateHospitalsController stateHospitalsController = Get.find();
-    // print(stateHospitalsController.stateHospitals);
+    SingleHospitalController singleHospitalController = Get.find();
 
     return Scaffold(
       backgroundColor: light,
@@ -77,8 +62,8 @@ class StateHospitalsScreen extends StatelessWidget {
                         );
                       },
                     ).toList(),
-                    onChanged: (String? state) {
-                      stateHospitalsController.changeState(
+                    onChanged: (String? state) async {
+                      await stateHospitalsController.changeState(
                         state: state,
                         index: states.indexOf(state!),
                       );
@@ -87,27 +72,41 @@ class StateHospitalsScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 30.0, left: 10),
+                margin: const EdgeInsets.only(top: 30.0, left: 10, bottom: 10),
                 child: CustomText(
-                  text:
-                      "${stateHospitalsController.stateValue.value} State Hospitals",
+                  text: stateHospitalsController.stateValue == "Select State"
+                      ? "No state selected"
+                      : "${stateHospitalsController.stateValue.value} State Hospitals",
                   size: 20.0,
                   weight: FontWeight.w600,
                   color: dark,
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: stateHospitalsController.stateHospitals!.length,
-                  itemBuilder: (BuildContext context, index) {
-                    print(stateHospitalsController
-                        .stateHospitals![index].properties!);
-                    return HospitalCard(
-                        stateHospital: stateHospitalsController
-                            .stateHospitals![index].properties!);
-                  },
+              if (stateHospitalsController.isLoading.isTrue ||
+                  stateHospitalsController.stateValue == "Select State")
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.all(100),
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
-              ),
+              if (stateHospitalsController.stateValue != "Select State")
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: stateHospitalsController.stateHospitals!.length,
+                    itemBuilder: (BuildContext context, index) {
+                      return InkWell(
+                        onTap: () async =>
+                            await singleHospitalController.goToSingleHospital(
+                                id: stateHospitalsController
+                                    .stateHospitals![index].id),
+                        child: HospitalCard(
+                            stateHospital: stateHospitalsController
+                                .stateHospitals![index].properties!),
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),

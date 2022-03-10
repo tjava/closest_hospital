@@ -1,4 +1,6 @@
 import 'package:closest_hospital/constants/colors.dart';
+import 'package:closest_hospital/controllers/single_hospital_controller.dart';
+import 'package:closest_hospital/controllers/state_hospitals_controller.dart';
 import 'package:closest_hospital/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,6 +31,8 @@ class SingleHospitalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SingleHospitalController singleHospitalController = Get.find();
+
     return Scaffold(
       backgroundColor: light,
       body: Padding(
@@ -83,23 +87,28 @@ class SingleHospitalScreen extends StatelessWidget {
                   children: [
                     _buildSingleHospital(
                       name: "Facility Name",
-                      value: "taiwo",
+                      value: singleHospitalController
+                          .singleHospitalPropertiesModel!.value.facility_name,
                     ),
                     _buildSingleHospital(
                       name: "Facility Type",
-                      value: "taiwo",
+                      value: singleHospitalController
+                          .singleHospitalPropertiesModel!.value.facility_type,
                     ),
                     _buildSingleHospital(
                       name: "Ownership",
-                      value: "taiwo",
+                      value: singleHospitalController
+                          .singleHospitalPropertiesModel!.value.ownership,
                     ),
                     _buildSingleHospital(
                       name: "Ward",
-                      value: "taiwo",
+                      value: singleHospitalController
+                          .singleHospitalPropertiesModel!.value.ward,
                     ),
                     _buildSingleHospital(
                       name: "L.G.A",
-                      value: "taiwo",
+                      value: singleHospitalController
+                          .singleHospitalPropertiesModel!.value.lga,
                     ),
                   ],
                 ),

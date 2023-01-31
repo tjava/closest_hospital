@@ -24,7 +24,7 @@ class Layout extends StatelessWidget {
       () => Scaffold(
         extendBody: true,
         body: Screens[navigationController.indexScreen.value],
-        bottomNavigationBar: const NavigationBar(),
+        bottomNavigationBar: const NavigationBars(),
       ),
     );
   }

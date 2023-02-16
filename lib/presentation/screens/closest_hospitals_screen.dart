@@ -44,7 +44,7 @@ class ClosestHospitalSceen extends StatelessWidget {
                         onTap: () {
                           // context.goNamed("singleHospital");
                           // context.read<ClosestHospitalsCubit>().getHospitals();
-                          // context.read<HospitalListCubit>().getHospitals();
+                          context.read<HospitalListCubit>().getHospitals();
                         },
                         child: HospitalCard(
                           hospital: hospitalsData.hospitals[index],

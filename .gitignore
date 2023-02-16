@@ -9,8 +9,7 @@
 .history
 .svn/
 lib/firebase_options.dart
-macos/firebase_app_id_file.json
-macos/Runner/GoogleService-Info.plist
+macos/*
 
 # IntelliJ related
 *.iml
@@ -47,3 +46,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java

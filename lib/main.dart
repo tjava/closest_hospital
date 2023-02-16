@@ -1,12 +1,17 @@
-import 'package:closest_hospital/constants/init_dependencies.dart';
-import 'package:closest_hospital/layout.dart';
-import 'package:closest_hospital/screens/facility_category.dart';
-import 'package:closest_hospital/screens/single_hospital_screen.dart';
+import 'package:closest_hospital/constants/__constants.dart';
+import 'package:closest_hospital/firebase_options.dart';
+import 'package:closest_hospital/logic/cubits/__cubits.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -16,34 +21,42 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: InitDependencies(),
-      title: 'Closest hospitals',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: () => Layout()),
-        GetPage(
-          name: '/singleHospital',
-          page: () => const SingleHospitalScreen(),
-          transition: Transition.rightToLeft,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<NavigationCubit>(
+          create: (context) => NavigationCubit(),
         ),
-        GetPage(
-          name: '/facilityCategory',
-          page: () => const FacilityCategory(),
-          transition: Transition.rightToLeft,
+        BlocProvider<HospitalListCubit>(
+          create: (context) => HospitalListCubit(),
+        ),
+        BlocProvider<ClosestHospitalsCubit>(
+          create: (context) => ClosestHospitalsCubit(),
+        ),
+        BlocProvider<StateSearchCubit>(
+          create: (context) => StateSearchCubit(),
+        ),
+        BlocProvider<StateHospitalsCubit>(
+          create: (context) => StateHospitalsCubit(
+            stateSearchCubit: BlocProvider.of<StateSearchCubit>(context),
+          ),
+        ),
+        BlocProvider<SpecialistHospitalsCubit>(
+          create: (context) => SpecialistHospitalsCubit(),
         ),
       ],
-      builder: (context, widget) => ResponsiveWrapper.builder(
-        ClampingScrollWrapper.builder(context, widget!),
-        breakpoints: [
-          ResponsiveBreakpoint.resize(350, name: MOBILE),
-          ResponsiveBreakpoint.autoScale(600, name: TABLET),
-          // ResponsiveBreakpoint.resize(800, name: DESKTOP),
-          ResponsiveBreakpoint.autoScale(1700, name: DESKTOP),
-        ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 812),
+        minTextAdapt: false,
+        splitScreenMode: true,
+        builder: (context, builder) {
+          return MaterialApp.router(
+            title: 'Closest hospitals',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            routerConfig: AppRouter.router,
+          );
+        },
       ),
     );
   }

@@ -1,0 +1,3 @@
+{"type":"FeatureCollection", "features":[
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[9.08470312,6.54340807]},"properties":{"Facility_n":"HEALTH POST KAGBANG","Facility_t":"Health Post","Ward":"UKPE","Ownership":"public","Lga":"cross_river_obudu","Lat":6.54340807,"Long":9.08470312}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[7.67780798,9.00720861]},"properties":{"Facility_n":"Alhari Clinic","Facility_t":"Primary Health Centre (PHC)","Ward":"Karu","Ownership":"private","Lga":"nasarawa_karu","Lat":9.00720861,"Long":7.67780798}}]}

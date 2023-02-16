@@ -1,43 +1,28 @@
-import 'package:closest_hospital/models/state_hospitals.dart';
-
-// StateHospital
-final _stateHospital0 = StateHospital(
-  imageUrl: 'assets/images/home_2.png',
-  name: 'StateHospital 0',
-  owner: 'private',
-  specialist: 'optomologist',
-);
-final _stateHospital1 = StateHospital(
-  imageUrl: 'assets/images/home_2.png',
-  name: 'StateHospital 1',
-  owner: 'public',
-  specialist: 'dental',
-);
-final _stateHospital2 = StateHospital(
-  imageUrl: 'assets/images/home_2.png',
-  name: 'StateHospital 2',
-  owner: 'private',
-  specialist: 'dental',
-);
-final _stateHospital3 = StateHospital(
-  imageUrl: 'assets/images/home_2.png',
-  name: 'StateHospital 3',
-  owner: 'public',
-  specialist: 'optomologist',
-);
-final _stateHospital4 = StateHospital(
-  imageUrl: 'assets/images/home_2.png',
-  name: 'StateHospital 4',
-  owner: 'public',
-  specialist: 'optomologist',
-);
-
-final List<StateHospital> stateHospitals = [
-  _stateHospital0,
-  _stateHospital1,
-  _stateHospital2,
-  _stateHospital3,
-  _stateHospital4,
+final List<Map<String, dynamic>> homeCardData = [
+  {
+    "name": "Hospital",
+    "image": "assets/images/home_3.png",
+  },
+  {
+    "name": "Clinic",
+    "image": "assets/images/home_4.png",
+  },
+  {
+    "name": "Health Post",
+    "image": "assets/images/home_5.png",
+  },
+  {
+    "name": "Specialist",
+    "image": "assets/images/home_6.png",
+  },
+  {
+    "name": "Dispensary",
+    "image": "assets/images/home_7.png",
+  },
+  {
+    "name": "P H C",
+    "image": "assets/images/home_8.png",
+  },
 ];
 
 final List<String> states = [
@@ -56,7 +41,7 @@ final List<String> states = [
   "Edo",
   "Ekiti",
   "Enugu",
-  "FCT - Abuja",
+  "FCT",
   "Gombe",
   "Imo",
   "Jigawa",
